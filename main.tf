@@ -7,23 +7,6 @@ provider "aws" {
     token      = "${var.session_token}"
 }
 
-#create a security group for RDS Database Instance
-resource "aws_security_group" "rds_sg" {
-  name = "rds_sg"
-  ingress {
-    from_port       = 3306
-    to_port         = 3306
-    protocol        = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
-
 #create a RDS Database Instance
 resource "aws_db_instance" "myinstance" {
   engine               = "mysql"
@@ -31,28 +14,9 @@ resource "aws_db_instance" "myinstance" {
   allocated_storage    =  20
   engine_version       = "8.0.35"
   instance_class       = "db.t3.micro"
-  username             = "usradmin"
-  password             = "S3nhaSup34S3gura"
+  username             = "sotto"
+  password             = "senhasupersegura"
   parameter_group_name = "default.mysql8.0"
-  vpc_security_group_ids = ["${aws_security_group.rds_sg.id}"]
   skip_final_snapshot  = true
   publicly_accessible =  true
-}
-
-# Cria uma chave SSH para acessar a EC2 (opcional, mas recomendado)
-resource "aws_key_pair" "default" {
-  key_name   = "default-key"
-  public_key = var.ec2_public_key
-}
-
-# Cria uma instância EC2 t2.micro
-resource "aws_instance" "web" {
-  ami                    = var.ec2_ami_id
-  instance_type          = "t2.micro"
-  key_name               = aws_key_pair.default.key_name
-  vpc_security_group_ids = [aws_security_group.rds_sg.id]
-
-  tags = {
-    Name = "FreeTier-EC2"
-  }
 }
