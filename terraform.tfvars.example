@@ -1,0 +1,7 @@
+region      = ""
+access_key  = ""
+secret_key  = ""
+session_token = ""
+
+ami         = ""
+public_key  = ""

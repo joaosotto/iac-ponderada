@@ -13,3 +13,8 @@ variable "session_token" {
 variable "region" {
     description = "AWS region"
 }
+
+variable "bucket_name" {
+  description = "Nome do bucket S3"
+  type        = string
+}
