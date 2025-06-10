@@ -57,15 +57,17 @@ terraform init
 ```
 
 4. Visualize o plano de execução
-bash
-Copiar
-Editar
+
+```bash
 terraform plan
+```
+
 5. Provisione os recursos
-bash
-Copiar
-Editar
+
+```bash
 terraform apply
+```
+
 Confirme digitando yes quando solicitado.
 
 ### Comandos Terraform e Resultados
