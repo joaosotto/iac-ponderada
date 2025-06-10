@@ -55,18 +55,21 @@ bucket_name   = "meu-bucket-exemplo-123456"
 ```bash
 terraform init
 ```
+![alt text](assets/terraform_init.png)
 
 4. Visualize o plano de execução
 
 ```bash
 terraform plan
 ```
+![alt text](assets/terraform_plan.png)
 
 5. Provisione os recursos
 
 ```bash
 terraform apply
 ```
+![alt text](assets/terraform_apply.png)
 
 Confirme digitando yes quando solicitado.
 
